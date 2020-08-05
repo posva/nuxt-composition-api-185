@@ -29,15 +29,22 @@
 
 <script>
 import { defineComponent, useFetch, useContext } from "nuxt-composition-api";
+
 export default defineComponent({
+  // async fetch(ctx) {
+  //   await new Promise(resolve => setTimeout(resolve, 300));
+  //   ctx.error("error");
+  // },
+
   setup() {
     const { error } = useContext();
 
     useFetch(async () => {
       await new Promise(resolve => setTimeout(resolve, 300));
-      error("error");
+      error(new Error("not found"));
       return;
     });
+
     return {};
   }
 });
